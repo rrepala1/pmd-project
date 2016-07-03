@@ -1,0 +1,1 @@
+lm.errors.ConfigurationError=function(r,o){Error.call(this),this.name="Configuration Error",this.message=r,this.node=o},lm.errors.ConfigurationError.prototype=new Error;

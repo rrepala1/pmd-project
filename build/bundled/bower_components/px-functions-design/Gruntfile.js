@@ -1,0 +1,1 @@
+module.exports=function(e){function s(e){var s,r=require("glob"),a={};return r.sync("*",{cwd:e}).forEach(function(r){s=r.replace(/\.js$/,""),a[s]=require(e+r)}),a}var r={pkg:e.file.readJSON("package.json")};e.loadTasks("tasks"),e.util._.extend(r,s("./tasks/options/")),e.initConfig(r),require("load-grunt-tasks")(e),e.registerTask("default",["sassdoc"])};

@@ -1,0 +1,86 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>px-dropdown Demo</title>
+    
+    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+      
+    <link rel="import" href="../polymer/polymer.html">
+    <link rel="import" href="px-dropdown.html">
+    <link rel="import" href="px-dropdown-chevron.html">
+    <link rel="import" href="px-dropdown-content.html">
+    <link rel="import" href="px-dropdown-text.html">
+    <link rel="import" href="../px-theme/px-theme.html">
+    <style>.cont{width:100px;margin-left:30px;}.tallDiv{min-height:300px;}.bound{height:120px;width:300px;background-color:black;}</style>
+  </head>
+  <body unresolved="">
+    <h3>Demo</h3>
+    <p>
+      Although related, examples are /not/ the same as the test fixtures. Tests are tests, examples are examples.
+    </p>
+    <p>
+      Also see the <a href="index.html">documentation</a> and the <a href="test/fixture.html">UI test fixture</a>.
+    </p>
+    <h1>Regular dropdown</h1>
+    <div class="cont">
+      <px-dropdown display-value="Text">
+        <px-dropdown-content extend-dropdown="true" extend-dropdown-by="25" max-cont-character-width="10" items="[{&quot;key&quot;:&quot;one&quot;, &quot;val&quot;: &quot;One&quot;}, {&quot;key&quot;:&quot;two&quot;, &quot;val&quot;: &quot;Two&quot;}, {&quot;key&quot;:&quot;three&quot;, &quot;val&quot;: &quot;Three&quot;}, {&quot;key&quot;:&quot;four&quot;, &quot;val&quot;: &quot;How now brown cow&quot;}]">
+        </px-dropdown-content>
+      </px-dropdown>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h1>dropdown with no chevron</h1>
+    <div class="cont">
+      <px-dropdown hide-chevron="true" display-value="Text">
+        <px-dropdown-content extend-dropdown="true" extend-dropdown-by="25" max-cont-character-width="10" items="[{&quot;key&quot;:&quot;one&quot;, &quot;val&quot;: &quot;One&quot;}, {&quot;key&quot;:&quot;two&quot;, &quot;val&quot;: &quot;Two&quot;}, {&quot;key&quot;:&quot;three&quot;, &quot;val&quot;: &quot;Three&quot;}, {&quot;key&quot;:&quot;four&quot;, &quot;val&quot;: &quot;How now brown cow&quot;}]">
+        </px-dropdown-content>
+      </px-dropdown>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h1>dropdown with scrolling</h1>
+    <div class="cont">
+      <px-dropdown display-value="Text">
+        <px-dropdown-content extend-dropdown="true" extend-dropdown-by="25" max-cont-character-width="10" items="[{&quot;key&quot;:&quot;one&quot;, &quot;val&quot;: &quot;One&quot;}, {&quot;key&quot;:&quot;two&quot;, &quot;val&quot;: &quot;Two&quot;}, {&quot;key&quot;:&quot;three&quot;, &quot;val&quot;: &quot;Three&quot;}, {&quot;key&quot;:&quot;four&quot;, &quot;val&quot;: &quot;four&quot;}, {&quot;key&quot;:&quot;five&quot;, &quot;val&quot;: &quot;five&quot;}, {&quot;key&quot;:&quot;six&quot;, &quot;val&quot;: &quot;six&quot;}, {&quot;key&quot;:&quot;seven&quot;, &quot;val&quot;: &quot;seven&quot;}, {&quot;key&quot;:&quot;height&quot;, &quot;val&quot;: &quot;eight&quot;}, {&quot;key&quot;:&quot;nine&quot;, &quot;val&quot;: &quot;nine&quot;}, {&quot;key&quot;:&quot;ten&quot;, &quot;val&quot;: &quot;ten&quot;}]">
+        </px-dropdown-content>
+      </px-dropdown>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h1>dropdown with checkboxes</h1>
+    <div class="cont">
+      <px-dropdown display-value="Text">
+        <px-dropdown-content checkbox-mode="true" max-cont-character-width="10" items="[{&quot;val&quot;: &quot;One&quot;, &quot;checked&quot;: &quot;true&quot;}, {&quot;val&quot;: &quot;Two&quot;}, {&quot;val&quot;: &quot;Three&quot;, &quot;checked&quot;: &quot;true&quot;}, {&quot;val&quot;: &quot;four&quot;}, {&quot;val&quot;: &quot;five&quot;}, {&quot;val&quot;: &quot;six&quot;}, {&quot;val&quot;: &quot;seven&quot;}, {&quot;val&quot;: &quot;eight&quot;}, {&quot;val&quot;: &quot;nine&quot;}, {&quot;val&quot;: &quot;ten&quot;}]">
+        </px-dropdown-content>
+      </px-dropdown>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h1>dropdown within bounds</h1>
+    <div id="bounding" class="bound">
+      <div class="cont">
+        <px-dropdown bound-target="bounding" display-value="Text">
+          <px-dropdown-content extend-dropdown="true" extend-dropdown-by="25" max-cont-character-width="10" items="[{&quot;key&quot;:&quot;one&quot;, &quot;val&quot;: &quot;One&quot;}, {&quot;key&quot;:&quot;two&quot;, &quot;val&quot;: &quot;Two&quot;}, {&quot;key&quot;:&quot;three&quot;, &quot;val&quot;: &quot;Three&quot;}, {&quot;key&quot;:&quot;four&quot;, &quot;val&quot;: &quot;four&quot;}, {&quot;key&quot;:&quot;five&quot;, &quot;val&quot;: &quot;five&quot;}, {&quot;key&quot;:&quot;six&quot;, &quot;val&quot;: &quot;six&quot;}, {&quot;key&quot;:&quot;seven&quot;, &quot;val&quot;: &quot;seven&quot;}, {&quot;key&quot;:&quot;height&quot;, &quot;val&quot;: &quot;eight&quot;}, {&quot;key&quot;:&quot;nine&quot;, &quot;val&quot;: &quot;nine&quot;}, {&quot;key&quot;:&quot;ten&quot;, &quot;val&quot;: &quot;ten&quot;}]">
+          </px-dropdown-content>
+        </px-dropdown>
+      </div>
+    </div>
+    <div class="tallDiv"></div>
+    <h1>Smart Orientation dropdown</h1>
+    Align the bottom of your window just below the dropdown.
+    <br>
+    <br>
+    <div class="cont">
+      <px-dropdown display-value="Text"> display-value="Text"
+        <px-dropdown-content extend-dropdown="true" extend-dropdown-by="25" max-cont-character-width="10" items="[&quot;dog&quot;, &quot;cat&quot;, &quot;bear&quot;,&quot;tiger&quot;]">
+        </px-dropdown-content>
+      </px-dropdown>
+    </div>
+  
+
+</body></html>

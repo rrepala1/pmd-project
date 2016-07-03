@@ -1,0 +1,14 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+
+
+
+
+</head><body><dom-module id="px-card-controls">
+  <link rel="import" type="css" href="css/px-card-controls.css">
+  <template>
+    <button class="btn btn--small btn--primary" on-click="refresh">refresh</button>
+  </template>
+</dom-module>
+
+<script type="text/javascript">Polymer({is:"px-card-controls",refresh:function(){this.fire("px-card-refresh")}});</script>
+</body></html>

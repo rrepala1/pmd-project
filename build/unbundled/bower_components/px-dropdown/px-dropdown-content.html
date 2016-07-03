@@ -1,0 +1,25 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../px-tooltip/px-tooltip.html">
+<link rel="import" href="../iron-dropdown/iron-dropdown-scroll-manager.html">
+
+
+</head><body><dom-module id="px-dropdown-content">
+  <link rel="import" type="css" href="css/px-dropdown-content.css">
+  <template>
+      <div class="px-dropdown--content" id="dropdown" hidden$="{{!menuOpen}}">
+        <ul class="px-dropdown--list list-bare">
+          <template is="dom-repeat" items="{{computedItems}}" strip-whitespace="">
+            <li class="px-dropdown--listitem u-p--" on-tap="_clickItem">
+              <template is="dom-if" if="{{checkboxMode}}" strip-whitespace="">
+                <input type="checkbox" on-change="_checkChanged" checked="{{item.checked}}" class="px-dropdown--checkbox">
+              </template>{{item.val}}<template is="dom-if" if="{{_includeTooltip(item.val)}}" strip-whitespace="">
+                <px-tooltip tooltip-message="{{item.val}}"></px-tooltip>
+              </template>
+            </li>
+          </template>
+        </ul>
+      </div>
+  </template>
+</dom-module>
+<script>Polymer({is:"px-dropdown-content",properties:{items:{type:Array,notify:!0,value:function(){return[]}},computedItems:{type:Array,value:function(){return[]},computed:"_computedItems(items, items.*)"},selectionOccured:{type:Boolean,value:!1,readOnly:!0},menuOpen:{type:Boolean,notify:!0,value:!1},maxContCharacterWidth:{type:Number,value:0,observer:"_maxContCharacterWidthChanged"},extendDropdown:{type:Boolean,value:!1},extendDropdownBy:{type:Number,value:15},extended:{type:Boolean,value:!1},dropCellWidth:{type:Number,value:0,observer:"_dropCellWidthChanged"},dropCellHeight:{type:Number,value:0,observer:"_dropCellHeightChanged"},allowOutsideScroll:{type:Boolean,value:!1},checkboxMode:{type:Boolean,value:!1}},_maxContCharacterWidthChanged:function(e){e&&this.fire("maxContCharacterWidth",{maxContCharacterWidth:this.maxContCharacterWidth})},open:function(){if(this.menuOpen=!0,!this.allowOutsideScroll){var e=parseInt(this.$.dropdown.getBoundingClientRect().height);e<this.$.dropdown.scrollHeight&&Polymer.IronDropdownScrollManager.pushScrollLock(this.$.dropdown)}this.fire("dropdown_content_request_size",{pxContent:this})},_dropCellWidthChanged:function(e,t){e&&this._setWidth()},_dropCellHeightChanged:function(e,t){e&&this.adjustHeight()},_checkChanged:function(e){this._checkboxChanged(e.target)},_checkboxChanged:function(e){var t=Polymer.dom(e).parentNode.textContent;this.items.forEach(function(o,n){o.val===t&&this.set("items."+n+".checked",e.checked)}.bind(this))},close:function(){this.menuOpen=!1,Polymer.IronDropdownScrollManager.removeScrollLock(this.$.dropdown)},sizeHeight:function(e){var t=parseInt(this.$.dropdown.getBoundingClientRect().height);t>e?this.$.dropdown.style.height=e+"px":this.adjustHeight()},resetHeight:function(){this.$.dropdown.style.height=""},_includeTooltip:function(e){var t=this.maxContCharacterWidth;return null!==e&&void 0!==e&&("string"!=typeof e||0!==e.trim().length)&&(void 0!==t&&null!==t&&0!==t&&e.length>t)},_clickItem:function(e){if(this._clickFire(e),this.checkboxMode){var t=Polymer.dom(e.target).querySelector("input");t&&(t.checked=!t.checked,this._checkboxChanged(t))}else{for(var o,n=e.target,i=n.firstChild;i&&!o;)3==i.nodeType&&(o=i.data),i=i.nextSibling;this.close(),this.fire("dropdown_flip",!0),this._setSelectionOccured(!0),this.fire("dropdown_content_value_changed",{textValue:o})}},_clickFire:function(e){this.fire("px-dropdown-click",e)},_setWidth:function(){this.extendDropdown?this.$.dropdown.style.width=this.dropCellWidth+parseInt(this.extendDropdownBy)+"px":this.$.dropdown.style.width=this.dropCellWidth+"px"},adjustHeight:function(){var e=parseInt(this.$.dropdown.getBoundingClientRect().height);if(e<this.$.dropdown.scrollHeight){var t=parseInt(this.dropCellHeight/2);this.$.dropdown.style.height=e-t+"px"}},_computedItems:function(e){if("string"==typeof this.items[0]){var t=e.length,o=0,n=[];for(o;o<t;o++)this.checkboxMode?n.push({val:e[o],checked:!1}):n.push({val:e[o]});return n}var n=[];return e.forEach(function(e,t){n.push(e)}),n}});</script>
+</body></html>

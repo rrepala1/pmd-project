@@ -1,0 +1,14 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+
+
+
+</head><body><dom-module id="px-data-table-highlight">
+  <link rel="import" type="css" href="css/px-data-table-highlight.css">
+  <template>
+    <span></span>
+    <content></content>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"px-data-table-highlight",properties:{"import":{type:String,value:""},highlight:{type:Object,value:function(){return new Function}},highlightMethod:{type:String,value:""},highlightColor:{type:String,value:""},highlightType:{type:String,value:"cell"},highlightValue:{type:String,value:"low"}},ready:function(){this.importHref(this["import"],function(i){this.highlightMethod&&window.PxHighlight[this.highlightMethod]&&(this.highlight=window.PxHighlight[this.highlightMethod],this.fire("px-data-table-highlight-loaded"))},function(i){},!1)},calculateHighlightColor:function(){var i;if(this.updateStyles(),this.highlightColor)i=this.highlightColor;else{var t="--cell--value__highlight--"+this.highlightValue+"--color";i=this.getComputedStyleValue(t)}return i}});</script>
+</body></html>

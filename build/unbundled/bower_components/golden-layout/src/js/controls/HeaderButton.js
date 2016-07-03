@@ -1,0 +1,1 @@
+lm.controls.HeaderButton=function(t,e,i,o){this._header=t,this.element=$('<li class="'+i+'" title="'+e+'"></li>'),this._header.on("destroy",this._$destroy,this),this._action=o,this.element.click(this._action),this._header.controlsContainer.append(this.element)},lm.utils.copy(lm.controls.HeaderButton.prototype,{_$destroy:function(){this.element.off(),this.element.remove()}});

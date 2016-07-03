@@ -1,0 +1,17 @@
+<html><head><link rel="import" href="../../../module.html">
+<link rel="import" href="../../../lang.html">
+<link rel="import" href="../../../annotations/annotations.html">
+
+<link rel="import" href="../../bind.html">
+<link rel="import" href="../../bind-effects.html">
+<link rel="import" href="../../bind-annotations.html">
+
+<template>
+
+  <div>annotated #foo span:</div>
+  <br>
+  <span id="foo" attribute="{{path}}" oneway="[[otherpath]]" style="{{specialStyle}}">{{text}}</span>
+
+</template>
+
+<script>using(["Annotations","bind","bind-annotations"],function(e,t,n){function o(o,r){t.prepareModel(o);var a=e.parseAnnotations(r);return n.addEffects(o,a),a}function r(o,r){t.prepareInstance(o),t.createBindings(o);var a=document.importNode(r.content,!0);return o._nodes=n.marshalAnnotatedNodes(o._nodes,a,e.findAnnotatedNode),a}var a=document.querySelector("#abd");a.innerHTML+="<hr><h3>annotations-bind demo</h3><hr>";var d={},i=currentImport.querySelector("template"),p=(o(d,i),Object.create(d)),c=r(p,i);document.body.appendChild(c),p.text="Hello from Model",p.path="path",p.otherpath="other.path",p.specialStyle={backgroundColor:"red"};c.querySelector("#foo");a.innerHTML+='foo.<b>path</b> = "'+p.path+'"<br>foo.<b>otherpath</b> = "'+p.otherpath+'"<br>foo.<b>specialStyle</b> = "'+JSON.stringify(p.specialStyle)+'"<br>'});</script></head><body></body></html>

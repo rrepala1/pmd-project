@@ -1,0 +1,9 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+
+</head><body><dom-module id="px-dashboard">
+    <template>
+        <div id="container"></div>
+    </template>
+</dom-module>
+<script>window.px=window.px||{},px.dealer=px.dealer||{},px.dashboard={properties:{selectedDeckUrl:{type:String,observer:"deckUrlChanged"},viewServiceBaseUrl:{type:String},selectedDeckId:{type:String,observer:"deckIdChanged"},context:{type:Object,observer:"contextChanged"}},deckUrlChanged:function(e){e&&"{{"!==e.substring(0,2)&&this.fetchAndRenderDeck(e)},deckIdChanged:function(e){if(e&&"{{"!==e.substring(0,2)){var t=this._getBaseUrl()+"decks/"+e+"?filter[include][cards]&filter[order]=cards";this.fetchAndRenderDeck(t)}},contextChanged:function(e){var t=this.$.container.querySelector("px-deck");t&&(t.context=this.context)},created:function(){var e=this;this.addEventListener("px-deck-ready",function(t){t.stopPropagation(),t.target.context=e.context,t.target.init()})},fetchAndRenderDeck:function(e){var t=this.$.container;if(t){t.innerHTML="";var r=this;px.dealer.getDeck(e).then(function(e){"object"==typeof e?t.appendChild(r._buildDeck(e)):t.innerHTML=e},function(){console.error("fail to load the deck with url "+e)})}else console.error("container is not defined")},_buildDeck:function(e){var t=document.createElement(e.slug);t.setAttribute("id","deck-"+e.id);var r=this;return e.cards.constructor==Array&&e.cards.forEach(function(e){e.attributes.url=r._getBaseUrl()+"cards/"+e.id,t.addCard(e.slug,e.id,e.title,e.attributes)}),t},_getBaseUrl:function(){if(this.viewServiceBaseUrl)return"/"!==this.viewServiceBaseUrl.charAt(this.viewServiceBaseUrl.length)?this.viewServiceBaseUrl+"/":this.viewServiceBaseUrl;throw"view service base url is undefined"}},Polymer({is:"px-dashboard",behaviors:[px.dashboard]});</script>
+</body></html>

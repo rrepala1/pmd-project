@@ -1,0 +1,13 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+
+</head><body><dom-module id="px-dropdown-text">
+  <link rel="import" type="css" href="css/px-dropdown-text.css">
+  <template>
+      <span id="textWrap" class="flex__item px-dropdown-text">{{displayValue}}</span>
+      <template is="dom-if" if="{{_includeTooltip(tooltipValue, maxContCharacterWidth)}}">
+          <px-tooltip tooltip-message="{{tooltipValue}}" orientation="top"></px-tooltip>
+      </template>
+  </template>
+</dom-module>
+<script>Polymer({is:"px-dropdown-text",properties:{displayValue:{type:String,notify:!0,value:""},tooltipValue:{type:String,notify:!0,value:""},maxContCharacterWidth:{type:Number,notify:!0,value:0}},_includeTooltip:function(){return this.tooltipValue.length>this.maxContCharacterWidth}});</script>
+</body></html>

@@ -1,0 +1,13 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+
+
+</head><body><dom-module id="px-deck">
+    <template>
+        <content></content>
+    </template>
+</dom-module>
+<script>window.px=window.px||{},window.addEventListener("px-dashboard-ready",function(){document.querySelector("px-dashboard").init()}),px.deck={properties:{context:{type:Object,observer:"contextChanged"}},contextChanged:function(t){var e=this;Object.keys(this.cards).forEach(function(t){e.cards[t].context=e.context})},created:function(){this.cards={};var t=this,e=!1;this.deckInitialized=!1,this.addEventListener("px-card-ready",function(i){t.registerCardInDeck(i.target),t.deckInitialized?t.initializeCard(i.target):t.debounce("px-deck-ready",function(){e||(t.fire("px-deck-ready",null,{cancelable:!0}),e=!0)},250)})},ready:function(){this.state={}},attached:function(){},init:function(){var t=this;Object.keys(this.cards).forEach(function(e){t.initializeCard(t.cards[e])}),this.deckInitialized=!0},initializeCard:function(t){t.context=this.context,t.init(),t.isInit=!0},updateState:function(t,e){var i={};Polymer.Base.mixin(i,this.state),Polymer.Base.mixin(i,e),this.state=i;var d=this;Object.keys(this.cards).forEach(function(e){e!==t&&d.cards[e].set("deckState",d.state)})},registerCardInDeck:function(t){t._deck=this,this.cards[t.id]=t},addCard:function(t,e,i,d){if(!t||!e)throw"Add card must be called with a card name and card id";var a=document.createElement(t);if(a.setAttribute("id","card-"+e),a.setAttribute("title",i),a.setAttribute("context","{{context}}"),d&&"object"==typeof d)for(var r in d)"object"!=typeof d[r]?a.setAttribute(r,d[r]):a.setAttribute(r,JSON.stringify(d[r]));Polymer.dom(this).appendChild(a)},removeCardById:function(t){if(!t)throw"Remove card by id must be called with a card id";var e=Polymer.dom(this).querySelector("#"+t);return e?(delete this.cards[t],void Polymer.dom(this).removeChild(e)):void console.warn("Cannot find card by id "+t)}},Polymer({is:"px-deck",behaviors:[px.deck]});</script>
+
+
+
+</body></html>

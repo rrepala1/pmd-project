@@ -1,0 +1,57 @@
+[
+	{
+		"Plant":"P01",
+		"Aging_0-1":150,
+		"Aging_2":250,
+		"Aging_3-4":50,
+		"Aging_5":80,
+		"Aging_6":80,
+		"Plant1":"P01",
+		"Aging1_0-1":150,
+		"Aging1_2":250,
+		"Aging1_3-4":50,
+		"Aging1_5":80		
+	},
+	{
+		"Plant":"P02",
+		"Aging_0-1":250,
+		"Aging_2":150,
+		"Aging_3-4":100,
+		"Aging_5":180,
+		"Aging_6":80,
+		"Plant1":"P01",
+		"Aging1_0-1":150,
+		"Aging1_2":250,
+		"Aging1_3-4":50,
+		"Aging1_5":80		
+	},
+	{
+		"Plant":"P03",
+		"Aging_0-1":400,
+		"Aging_2":500,
+		"Aging_3-4":450,
+		"Aging_5":600,
+		"Aging_6":80,
+		"Plant1":"P01",
+		"Aging1_0-1":150,
+		"Aging1_2":250,
+		"Aging1_3-4":50,
+		"Aging1_5":80		
+	},
+	{
+		"Plant":"P04",
+		"Aging_0-1":100,
+		"Aging_2":300,
+		"Aging_3-4":500,
+		"Aging_5":200,
+		"Aging_6":80	,
+		"Plant1":"P01",
+		"Aging1_0-1":150,
+		"Aging1_2":250,
+		"Aging1_3-4":50,
+		"Aging1_5":80	
+	}
+]
+	
+
+	

@@ -1,0 +1,6 @@
+{
+  "name": "pmd-project",
+  "short_name": "pmd-project",
+  "start_url": "/",
+  "display": "standalone"
+}

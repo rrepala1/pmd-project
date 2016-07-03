@@ -1,0 +1,11 @@
+---
+applications:
+  - name: pmd
+    buildpack: predix_openresty_buildpack
+    path: build/MyProj
+    memory: 64M
+    stack: cflinuxfs2
+    
+    env:
+      UAA_SERVER_URL: https://17cbe3ac-43ea-42fe-99dc-e16b4f167325.predix-uaa.run.aws-usw02-pr.ice.predix.io # change to your UAA instance url
+      REDIS: redis-5

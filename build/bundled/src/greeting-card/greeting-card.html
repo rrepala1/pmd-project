@@ -1,0 +1,20 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-card/px-card.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+
+</head><body><dom-module id="greeting-card">
+  <template is="dom-bind">	
+
+
+<iron-ajax auto="" url="https://predixreportdetailsms-mm.run.aws-usw02-pr.ice.predix.io/fetchReq" handle-as="json" last-response="{{tableData}}"></iron-ajax>
+
+    	<px-card id="heat-data-card" icon="demo-icon" header-text="Heatmap" chevron="">
+           	<px-data-table id="heatmap-table" filterable="" table-data="{{tableData}}" horizontal="">					         	
+           	</px-data-table>
+      </px-card>
+    
+  </template>
+
+  <script>Polymer({is:"greeting-card",properties:{prop1:{type:String,value:"Guest"}}});</script>
+</dom-module></body></html>

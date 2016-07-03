@@ -1,0 +1,22 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="aha-table.html">
+<link rel="import" href="px-data-table-column.html">
+<link rel="import" href="px-data-table-highlight.html">
+<link rel="import" href="../px-validation/px-validation.html">
+
+
+
+</head><body><dom-module id="px-data-table">
+  <link rel="import" type="css" href="css/px-data-table.css">
+
+  <template>
+    <div class="flex">
+      <aha-table data="{{tableData}}" filterable="{{filterable}}" striped="{{striped}}" table-columns="{{tableColumns}}" table-rows="{{tableRows}}" selectable="{{selectable}}" selected-rows="{{selectedRows}}" meta="{{meta}}" hide-pagination-control="{{hidePaginationControl}}" show-column-chooser="{{showColumnChooser}}" enable-column-reorder="{{enableColumnReorder}}" enable-column-resize="{{enableColumnResize}}" id="dataTable">
+                 <content></content>
+      </aha-table>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"px-data-table",properties:{tableData:{type:Array,value:function(){return[]},notify:!0},striped:{type:Boolean,value:!1},filterable:{type:Boolean,value:!1},tableColumns:{type:Boolean,value:!1},tableRows:{type:Boolean,value:!1},selectable:{type:Boolean,value:!1},hidePaginationControl:{type:Boolean,value:!1},selectedRows:{type:Array,value:function(){return[]},notify:!0},showColumnChooser:{type:Boolean,value:!1},enableColumnReorder:{type:Boolean,value:!1},enableColumnResize:{type:Boolean,value:!1}}});</script>
+</body></html>

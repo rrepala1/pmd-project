@@ -1,0 +1,1 @@
+module.exports=function(s){s.set({basePath:"",frameworks:["jasmine"],files:["./lib/jquery.js","./build/ns.js","./src/js/utils/utils.js","./src/js/**","./test/**"],exclude:[],preprocessors:{},reporters:["progress"],port:9876,colors:!0,logLevel:s.LOG_INFO,autoWatch:!0,browsers:["Chrome"],singleRun:!1})};

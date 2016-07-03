@@ -1,0 +1,8 @@
+<html><head></head><body><dom-module id="px-data-table-column">
+  <template>
+    <content id="contentNode"></content>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"px-data-table-column",properties:{name:{type:String,value:""},label:{type:String,value:""},type:{type:String,value:"string"},sortable:{type:Boolean,value:!1},editable:{type:Boolean,value:!1},filterable:{type:Boolean,value:!1,notify:!0},sortFunctionName:{type:String,value:""},filterFunctionName:{type:String,value:""},maxColumnCharacterWidth:{type:Number,value:0},ellipsisClipPosition:{type:String,value:"right"},dropdownItems:{type:Array,value:function(){return[]},notify:!0},hide:{type:Boolean,value:!1},_highLightElLoadedCount:{type:Number,value:0}},validate:function(e){var t=Polymer.dom(this).querySelector("px-validation");return t?t.validate(e):{passedValidation:!0}}});</script>
+</body></html>

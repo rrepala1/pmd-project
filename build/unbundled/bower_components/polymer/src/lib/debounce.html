@@ -1,0 +1,2 @@
+<html><head><script>Polymer.Debounce=function(){function t(t,i,o){return t?t.stop():t=new n(this),t.go(i,o),t}var i=Polymer.Async,n=function(t){this.context=t;var i=this;this.boundComplete=function(){i.complete()}};return n.prototype={go:function(t,n){var o;this.finish=function(){i.cancel(o)},o=i.run(this.boundComplete,n),this.callback=t},stop:function(){this.finish&&(this.finish(),this.finish=null,this.callback=null)},complete:function(){if(this.finish){var t=this.callback;this.stop(),t.call(this.context)}}},t}();</script>
+</head><body></body></html>

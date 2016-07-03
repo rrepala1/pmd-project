@@ -1,0 +1,1 @@
+lm.utils.BubblingEvent=function(t,i){this.name=t,this.origin=i,this.isPropagationStopped=!1},lm.utils.BubblingEvent.prototype.stopPropagation=function(){this.isPropagationStopped=!0};

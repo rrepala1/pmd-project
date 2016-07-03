@@ -1,0 +1,1 @@
+lm.config.itemDefaultConfig={isClosable:!0,reorderEnabled:!0,title:""};

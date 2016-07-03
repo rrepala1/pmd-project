@@ -1,0 +1,17 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="px-card-header.html">
+
+
+
+</head><body><dom-module id="px-card">
+    <link rel="import" type="css" href="css/px-card.css">
+    <template>
+        <template is="dom-if" if="{{headerText}}">
+            <px-card-header icon="{{icon}}" header-text="{{headerText}}" chevron="{{chevron}}"></px-card-header>
+        </template>
+        <content></content>
+    </template>
+</dom-module>
+
+<script type="text/javascript">!function(){window.px=window.px||{},window.px.card={properties:{title:{type:String,reflectToAttributes:!0},context:{type:Object,observer:"_contextChanged"},url:{type:String},deckState:{type:Object,observer:"_deckStateChanged"}},_contextChanged:function(t,e){this.contextChanged&&"function"==typeof this.contextChanged&&this.isInit===!0&&this.contextChanged(t,e)},_deckStateChanged:function(t,e){this.fromDeck=!0,this.deckStateChanged&&"function"==typeof this.deckStateChanged&&this.deckStateChanged(t,e),this.fromDeck=!1},_refresh:function(){this.refresh&&"function"==typeof this.refresh&&this.refresh()},ready:function(){this.addEventListener("px-card-refresh",this._refresh)},attached:function(){if(this.isInit=!1,this.fire("px-card-ready"),!this.id)throw"Card "+this.tagName+" cannot be created without an id!"},init:function(){},updateDeck:function(t){this.fromDeck||this._deck&&this._deck.updateState&&this._deck.updateState(this.id,t)},showCard:function(){this.hidden=!1,this.querySelector("px-card").hidden=!1},hideCard:function(){this.hidden=!0,this.querySelector("px-card").hidden=!0},getData:function(){return window.px.dealer.getData.apply(window.px.dealer,arguments)},getCardAttributes:function(){var t={},e=document.querySelector(this.nodeName),i=e.behaviors;i.forEach(function(i){for(n in i.properties)t[px.slugify(n)]=e[n]});for(var n in e.properties)t[px.slugify(n)]=e[n];return t},save:function(){var t=this.getCardAttributes(),e=this.url;if(e){var i={};return t.title&&(i.title=t.title,delete t.title),t.url&&delete t.url,delete t.id,i.attributes=t,window.px.dealer.httpRequest({method:"PUT",url:e,headers:{"Content-Type":"application/json"},data:i})}throw"Card url is undefined"}}}(),Polymer({is:"px-card",properties:{headerText:{type:String},icon:{type:String},chevron:{type:Boolean}}});</script>
+</body></html>

@@ -1,0 +1,17 @@
+<html><head><link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer-font-awesome/polymer-font-awesome.html">
+
+
+
+
+</head><body><dom-module id="px-dropdown-chevron">
+  <link rel="import" type="css" href="css/px-dropdown-chevron.css">
+  <template>
+    <div class$="{{_chevronClass(hover, opened)}} px-dropdown-chevron" id="trigger">
+      <iron-icon icon="polymer-font-awesome:fa-angle-down" class$="{{_chevronClass(hover, opened)}} angle-down"></iron-icon>
+    </div>
+  </template>
+</dom-module>
+
+<script>Polymer({is:"px-dropdown-chevron",properties:{hover:{type:Boolean,value:!1,notify:!0},opened:{type:Boolean,value:!1,notify:!0}},listeners:{hoverOff:"_manipulateHoverOff",hoverOn:"_manipulateHoverOn",opened:"_manipulateOpened"},_manipulateOpened:function(e){e.stopPropagation(),this.opened=!this.opened},_manipulateHoverOff:function(e){e.stopPropagation(),this.hover=!1},_manipulateHoverOn:function(e){e.stopPropagation(),this.hover=!0},_chevronClass:function(){return this.opened?"opened":this.hover?"hover":void 0}});</script>
+</body></html>

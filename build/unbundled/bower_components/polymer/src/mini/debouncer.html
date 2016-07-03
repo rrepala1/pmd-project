@@ -1,0 +1,5 @@
+<html><head><link rel="import" href="../lib/async.html">
+<link rel="import" href="../lib/debounce.html">
+
+<script>Polymer.Base._addFeature({_setupDebouncers:function(){this._debouncers={}},debounce:function(e,n,c){return this._debouncers[e]=Polymer.Debounce.call(this,this._debouncers[e],n,c)},isDebouncerActive:function(e){var n=this._debouncers[e];return!(!n||!n.finish)},flushDebouncer:function(e){var n=this._debouncers[e];n&&n.complete()},cancelDebouncer:function(e){var n=this._debouncers[e];n&&n.stop()}});</script>
+</head><body></body></html>

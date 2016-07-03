@@ -1011,34 +1011,22 @@ var config = {
                 type: 'stack',
                 content:[
                   {
-      type: 'component',
-        title:'Heatmap',
-      componentName: 'heatmap'
-    },
+      					type: 'component',
+        					title:'Buyer',
+      					componentName: 'heatMapBuyer'
+    					},
                   {
                     
                     type: 'component',
-                    title: 'LexCorp plc.',
-                    componentName: 'hey',
-                    componentState: {
-                      companyName: 'Stock Y'
-                    }
-                  },
-                  {
-                    type: 'component',
-                    title: 'Springshield plc.',
-                    componentName: 'hey',
-                    componentState: {
-                      companyName: 'Stock Z'
-                    }
+                    title: 'Vendor',
+                    componentName: 'heatMapVendor'                    
                   }
                 ]
               },
                   {
-                    title: 'Layout',
+                    title: 'Summary',
                     type: 'component',
-                    componentName: 'testComponent',
-                    componentState: { bg: 'golden_layout_text.png' }
+                    componentName: 'barChart'
                   }
                 ]
               
@@ -1048,16 +1036,13 @@ var config = {
                 content:[
                   {
                     type: 'component',
-                    title: 'Golden',
-                    componentName: 'hey',
-                    width: 50,
-                    componentState: { bg: 'golden_layout_spiral.png' }
+                    title: 'Scatter - Requisition By Buyer',
+                    componentName: 'bubbleChart'                    
                   },
                   {
-                    title: 'Layout',
+                    title: 'Requisition By Purchasing Group Manager',
                     type: 'component',
-                    componentName: 'hey',
-                    componentState: { bg: 'golden_layout_text.png' }
+                    componentName: 'stackedBarChart'
                   }
                 ]
               }
@@ -1106,15 +1091,33 @@ var config = {
   
   //myLayout.registerComponent( 'stockGrid', StockGridComponent );
 
-myLayout.registerComponent( 'heatmap', function( container, componentState ){
-    container.getElement().html( '<heatmap-card></heatmap-card>' );
+myLayout.registerComponent( 'heatMapBuyer', function( container, componentState ){
+    container.getElement().html( '<heatmap-buyer-card></heatmap-buyer-card>' );
+});
+
+myLayout.registerComponent( 'heatMapVendor', function( container, componentState ){
+    container.getElement().html( '<heatmap-vendor-card></heatmap-vendor-card>' );
+});
+
+myLayout.registerComponent( 'barChart', function( container, componentState ){
+    container.getElement().html( '<bar-chart-card></bar-chart-card>' );
+});
+
+myLayout.registerComponent( 'bubbleChart', function( container, componentState ){
+    container.getElement().html( '<bubble-chart-card></bubble-chart-card>' );
 });
 
 
+myLayout.registerComponent( 'stackedBarChart', function( container, componentState ){
+    container.getElement().html( '<stacked-bar-chart></stacked-bar-chart>' );
+});
+
+/*
 myLayout.registerComponent( 'testComponent', function( container, componentState ){
     //container.getElement().html( '<paper-card><h2> Hello World !!</h2></paper-card>' );
     container.getElement().html( '<greeting-card></greeting-card>' );
 });
+*/
 
   myLayout.init();
 });

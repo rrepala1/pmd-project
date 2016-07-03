@@ -1,0 +1,65 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../bower_components/highcharts/highcharts.js"></script>
+<script src="../../bower_components/highcharts/highstock.js"></script>
+<script src="../../bower_components/highcharts/modules/map.js"></script>
+
+<dom-module id="stacked-bar-chart">
+  <template>
+   
+    <div id="container" style="width:100%; height:400px;"></div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'stacked-bar-chart',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'sample-app-app',
+        },
+      },
+      ready: function() {
+$('#container').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Stacked bar chart'
+        },
+        xAxis: {
+            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total fruit consumption'
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'John',
+            data: [5, 3, 4, 7, 2]
+        }, {
+            name: 'Jane',
+            data: [2, 2, 3, 2, 1]
+        }, {
+            name: 'Joe',
+            data: [3, 4, 4, 2, 5]
+        }]
+    });
+	
+      }
+    });
+  </script>
+</dom-module>

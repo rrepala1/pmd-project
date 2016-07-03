@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-card/px-card.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<dom-module id="bar-chart-card">
+  <template is="dom-bind">	
+
+<!--
+<iron-ajax auto url="../../sample-data/plant-data.json" handle-as="json" last-response="{{tableData}}"></iron-ajax>
+-->
+
+    	<px-card id="bar-chart-card1" icon='demo-icon' chevron >
+           
+			<google-chart 
+				type='bar' 
+				options='{"title": "Age Classification"}' 
+				data='{"cols":[{"id":"","label":"Topping","pattern":"","type":"string"},{"id":"","label":"%","pattern":"","type":"number"}],"rows":[{"c":[{"v":"Aging","f":null},{"v":27.7,"f":null}]},{"c":[{"v":"Ok","f":null},{"v":72.3,"f":null}]}]}'>
+			</google-chart>			
+			
+      </px-card>
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'bar-chart-card',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'Guest',
+        },
+      },
+
+    });
+  </script>
+</dom-module>

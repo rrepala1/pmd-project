@@ -1,0 +1,26 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-card/px-card.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+<script src="../../bower_components/highcharts/highstock.js"></script>
+<script src="../../bower_components/highcharts/highcharts-more.js"></script>
+<script src="../../bower_components/highcharts/modules/exporting.js"></script>
+
+
+</head><body><dom-module id="bubble-chart-card">
+  <template is="dom-bind">	
+
+
+<iron-ajax auto="" url="../../sample-data/bubble-chart.json" handle-as="json" last-response="{{bubbleData}}"></iron-ajax>
+
+    	<px-card id="bubble-chart-card1" icon="demo-icon" chevron="">
+          
+			
+				<div id="container2" style="width:100%; height:400px"></div>
+      </px-card>
+    
+  </template>
+
+  <script>Polymer({is:"bubble-chart-card",properties:{prop1:{type:String,value:"Guest"}},ready:function(){var t={chart:{type:"bubble",renderTo:"container2",plotBorderWidth:1,zoomType:"xy"},legend:{enabled:!1},title:{text:"Requisition By Buyer"},xAxis:{gridLineWidth:1,title:{text:"Order Cost($)"},labels:{format:"{value} "},plotLines:[{color:"black",dashStyle:"dot",width:2,value:2,label:{rotation:0,y:15,style:{fontStyle:"italic"}},zIndex:3}]},yAxis:{startOnTick:!1,endOnTick:!1,title:{text:"# Open Req"},labels:{format:"{value}"},maxPadding:.2,plotLines:[{color:"black",dashStyle:"dot",width:2,value:2.7,label:{align:"right",style:{fontStyle:"italic"}},zIndex:3}]},tooltip:{useHTML:!0,headerFormat:"<table>",pointFormat:"<tr><th>Purchasing Group Manager </th><td>{point.purchaseManager}</td></tr><tr><th># Open Request: </th><td>{point.x}</td></tr><tr><th>Order Cost($):</th><td>{point.y}</td></tr>",footerFormat:"</table>",followPointer:!0},plotOptions:{series:{dataLabels:{enabled:!0,format:"{point.name}"}}},series:[{}]},e="../../sample-data/bubble-chart.json";$.getJSON(e,function(e){t.series[0].data=e;new Highcharts.Chart(t)})}});</script>
+</dom-module></body></html>

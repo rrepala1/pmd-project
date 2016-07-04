@@ -2,7 +2,7 @@
 applications:
   - name: pmd
     buildpack: predix_openresty_buildpack
-    path: build/bundled
+    path: build/MyProj
     memory: 64M
     stack: cflinuxfs2
     

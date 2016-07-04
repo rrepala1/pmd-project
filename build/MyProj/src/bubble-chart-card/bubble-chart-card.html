@@ -3,16 +3,19 @@
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
 <link rel="import" href="../../bower_components/google-chart/google-chart.html">
+<script src="../../bower_components/highcharts/highstock.js"></script>
+<script src="../../bower_components/highcharts/highcharts-more.js"></script>
+<script src="../../bower_components/highcharts/modules/exporting.js"></script>
+
 
 <dom-module id="bubble-chart-card">
   <template is="dom-bind">	
 
-<!--
-<iron-ajax auto url="../../sample-data/plant-data.json" handle-as="json" last-response="{{tableData}}"></iron-ajax>
--->
+
+<iron-ajax auto url="../../sample-data/bubble-chart.json" handle-as="json" last-response="{{bubbleData}}"></iron-ajax>
 
     	<px-card id="bubble-chart-card1" icon='demo-icon' chevron >
-           
+          <!-- 
 			<google-chart
     			type="bubble"
     			data='[["ID", "Life Expectancy", "Fertility Rate", "Region", "Population"],
@@ -27,7 +30,9 @@
            ["RUS", 68.6,  1.54, "Europe",        141850000],
            ["USA", 78.09, 2.05, "North America", 307007000]]'>
   </google-chart>			
+			-->
 			
+				<div id="container2" style="width:100%; height:400px;"></div>
       </px-card>
     
   </template>
@@ -43,7 +48,111 @@
           value: 'Guest',
         },
       },
+      ready: function(){
+       //var chart = new Highcharts.Chart({
+       var options = {
 
+				chart: {
+					type: 'bubble',
+					renderTo: 'container2',
+					plotBorderWidth: 1,
+					zoomType: 'xy'
+					
+				},
+
+				legend: {
+					enabled: false
+				},
+				title: {
+					text: 'Requisition By Buyer'
+				},
+				xAxis: {
+					gridLineWidth: 1,
+					title: {
+						text: 'Order Cost($)'
+					},
+					labels: {
+						format: '{value} '
+					},
+					plotLines: [{
+						color: 'black',
+						dashStyle: 'dot',
+						width: 2,
+						value: 2,
+						label: {
+							rotation: 0,
+							y: 15,
+							style: {
+								fontStyle: 'italic'
+							},
+						   
+						},
+						zIndex: 3
+					}]
+				},
+
+				yAxis: {
+					startOnTick: false,
+					endOnTick: false,
+					title: {
+						text: '# Open Req'
+					},
+					labels: {
+						format: '{value}'
+					},
+					maxPadding: 0.2,
+					plotLines: [{
+						color: 'black',
+						dashStyle: 'dot',
+						width: 2,
+						value: 2.7,
+						label: {
+							align: 'right',
+							style: {
+								fontStyle: 'italic'
+							},
+							
+						},
+						zIndex: 3
+					}]
+				},
+
+				tooltip: {
+					useHTML: true,
+					headerFormat: '<table>',
+					pointFormat: '<tr><th>Purchasing Group Manager </th><td>{point.purchaseManager}</td></tr>' +
+						'<tr><th># Open Request: </th><td>{point.x}</td></tr>' +
+						'<tr><th>Order Cost($):</th><td>{point.y}</td></tr>' ,
+						
+					footerFormat: '</table>',
+					followPointer: true
+				},
+
+				plotOptions: {
+					series: {
+						dataLabels: {
+							enabled: true,
+							format: '{point.name}'
+						}
+					}
+				},
+
+
+				series: [{}]
+				
+				};
+				
+				
+				
+	var url =  "../../sample-data/bubble-chart.json";
+	
+    $.getJSON(url,  function(data) {
+        options.series[0].data = data;
+        var chart = new Highcharts.Chart(options);
+    });
+				
+      	
+		}	
     });
   </script>
 </dom-module>

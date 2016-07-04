@@ -26,7 +26,7 @@
 
 	<link rel="stylesheet" type="text/css" href="/bower_components/golden-layout/test.css" />
 	<link rel="stylesheet" type="text/css" href="/bower_components/golden-layout/src/css/goldenlayout-base.css" />
-	<link rel="stylesheet" type="text/css" href="/bower_components/golden-layout/src/css/goldenlayout-soda-theme.css" />
+	<link rel="stylesheet" type="text/css" href="/bower_components/golden-layout/src/css/goldenlayout-light-theme.css" />
 	<script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
 	
 	<script type="text/javascript">

@@ -1,0 +1,37 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html"> 
+
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+</head><body><dom-module id="filter-panel-card">
+  <template>
+    <style>:host{display:block;color:black;width:256px;}paper-button{margin-left:32px;}</style>
+    
+    <paper-input label="Search Keywords" type="search">
+    	<paper-icon-button prefix="" icon="search"></paper-icon-button>
+  		<paper-icon-button suffix="" icon="clear"></paper-icon-button>
+	</paper-input>
+	
+	<paper-textarea label="Selection">	
+	</paper-textarea><br>
+	
+	<paper-button raised="">View Details</paper-button>
+	
+	<paper-input label="Filters" disabled=""></paper-input>
+	
+	<paper-input label="MultiBox" disabled=""></paper-input>
+	
+	<paper-input label="Age Bucket" type="search">
+	<paper-icon-button suffix="" icon="search"></paper-icon-button>
+	</paper-input>
+	  
+    
+    
+  </template>
+
+  <script>Polymer({is:"filter-panel-card",properties:{prop1:{type:String,value:"to my box application"}}});</script>
+</dom-module></body></html>

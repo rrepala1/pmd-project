@@ -8,7 +8,9 @@
     "px-card": "PredixDev/px-card#^0.4.3",
     "px-data-table": "PredixDev/px-data-table#^1.11.1",
     "highcharts": "^4.2.5",
-    "google-chart": "GoogleWebComponents/google-chart#^1.0.6"
+    "google-chart": "GoogleWebComponents/google-chart#^1.0.6",
+    "paper-button": "PolymerElements/paper-button#^1.0.12",
+    "paper-input": "PolymerElements/paper-input#^1.1.14"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

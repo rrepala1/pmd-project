@@ -994,7 +994,7 @@ var config = {
               {
                 title: 'Filter',
                 type: 'component',
-                componentName: 'hey',
+                componentName: 'filterPanel'
               }
               
             ]
@@ -1090,6 +1090,10 @@ var config = {
   });
   
   //myLayout.registerComponent( 'stockGrid', StockGridComponent );
+
+myLayout.registerComponent( 'filterPanel', function( container, componentState ){
+    container.getElement().html( '<filter-panel-card></filter-panel-card>' );
+});
 
 myLayout.registerComponent( 'heatMapBuyer', function( container, componentState ){
     container.getElement().html( '<heatmap-buyer-card></heatmap-buyer-card>' );

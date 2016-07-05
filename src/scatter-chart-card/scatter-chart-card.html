@@ -1,0 +1,126 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/px-card/px-card.html">
+
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../bower_components/highcharts/highstock.js"></script>
+<script src="../../bower_components/highcharts/highcharts-more.js"></script>
+<script src="../../bower_components/highcharts/modules/exporting.js"></script>
+
+
+<dom-module id="scatter-chart-card">
+  <template is="dom-bind">	
+
+<!--
+<iron-ajax auto url="../../sample-data/bubble-chart-2.json" handle-as="json" last-response="{{bubbleData}}"></iron-ajax>
+-->
+<!--
+<iron-ajax auto url="https://predixbubblechartms-mm.run.aws-usw02-pr.ice.predix.io/bubbleChart" handle-as="json" last-response="{{bubbleData}}"></iron-ajax>
+-->
+
+    	<px-card id="scatter-chart-card1" icon='demo-icon' chevron >
+          <div id="containerScatter" style="width:100%; height:400px;"></div>
+      </px-card>
+    
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'scatter-chart-card',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'Guest',
+        },
+      },
+      ready: function(){
+    
+       
+    //$('#containerScatter').highcharts({
+    
+    var options = {
+        chart: {
+            type: 'scatter',
+            zoomType: 'xy'
+        },
+        title: {
+            text: 'Height Versus Weight of 507 Individuals by Gender'
+        },
+        subtitle: {
+            text: 'Source: Heinz  2003'
+        },
+        xAxis: {
+            title: {
+                enabled: true,
+                text: 'Height (cm)'
+            },
+            startOnTick: true,
+            endOnTick: true,
+            showLastLabel: true
+        },
+        yAxis: {
+            title: {
+                text: 'Weight (kg)'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 100,
+            y: 70,
+            floating: true,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+            borderWidth: 1
+        },
+        plotOptions: {
+            scatter: {
+                marker: {
+                    radius: 5,
+                    states: {
+                        hover: {
+                            enabled: true,
+                            lineColor: 'rgb(100,100,100)'
+                        }
+                    }
+                },
+                states: {
+                    hover: {
+                        marker: {
+                            enabled: false
+                        }
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br>',
+                    pointFormat: '{point.x} cm, {point.y} kg'
+                }
+            }
+        },
+        series: [{}]
+    //});
+    };
+    
+    var chart = new Highcharts.Chart(options);
+
+
+
+				
+	//var url =  "../../sample-data/bubble-chart-2.json";
+	//var url =  "https://predixbubblechartms-mm.run.aws-usw02-pr.ice.predix.io/bubbleChart";
+	
+	/*
+    $.getJSON(url,  function(data) {
+        options.series[0].data = data;
+        var chart = new Highcharts.Chart(options);
+    });
+		*/		
+      	
+		}	
+    });
+  </script>
+</dom-module>

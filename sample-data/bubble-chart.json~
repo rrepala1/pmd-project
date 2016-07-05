@@ -1,5 +1,5 @@
 [
-{ "x": 5, "y": 5, "name": "Buyer 1", "purchaseManager": "SAMPLE1", "color":"#ff4d4d" }
-,{ "x": 4, "y": 3, "name": "Buyer 2", "purchaseManager": "SAMPLE2", "color" : "#33bbff" }
-,{ "x": 7, "y": 3, "name": "Buyer 3", "purchaseManager": "SAMPLE3", "color" : "#ff99dd" }
+{ "x": 5, "y": 5, "buyer": "Buyer 1", "purMgr": "SAMPLE1", "color":"#ff4d4d" }
+,{ "x": 4, "y": 3, "buyer": "Buyer 2", "purMgr": "SAMPLE2", "color" : "#33bbff" }
+,{ "x": 7, "y": 3, "buyer": "Buyer 3", "purMgr": "SAMPLE3", "color" : "#ff99dd" }
 ]

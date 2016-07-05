@@ -12,14 +12,27 @@
     <style>
       :host {
         display: block;
-        color: black;
+        color: white;
         width: 256px;
       }
       
       paper-button{
-			margin-left:32px;      
+			margin-left:32px;
+			background-color: white;
+			color: black;      
       }
     </style>
+    <style is="custom-style">
+			paper-input, paper-textarea{
+				--secondary-text-color: white;
+				--paper-input-container-label: {
+					font-size: 12px;
+				}
+				--primary-text-color: white;
+				--primary-color: white;
+			}    
+
+	</style>
     
     <paper-input label="Search Keywords" type="search">
     	<paper-icon-button prefix icon="search"></paper-icon-button>

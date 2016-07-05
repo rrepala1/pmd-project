@@ -54,7 +54,7 @@
     //});
     };
     
-	var url =  "../../sample-data/stacked-bar-chart.json";
+	var url =  "../../sample-data/stacked-bar-data.json";
 	
     $.getJSON(url,  function(data) {
         options.series[0].data = data;

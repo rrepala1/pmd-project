@@ -10,7 +10,7 @@
 <iron-ajax auto url="../../sample-data/plant-data.json" handle-as="json" last-response="{{tableData}}"></iron-ajax>
 -->
 
-<iron-ajax auto url="https://predixdashboardtablems-mm.run.aws-usw02-pr.ice.predix.io/fetchReqDashboardVendor?callback=?" handle-as="json" last-response="{{tableData}}"></iron-ajax>
+<iron-ajax auto url="https://predixdashboardtablems-mm.run.aws-usw02-pr.ice.predix.io/fetchReqDashboardVendor" handle-as="json" last-response="{{tableData}}"></iron-ajax>
 		<style type="text/css">
 		
 			px-data-table{
@@ -20,7 +20,7 @@
 		</style>
 
     	<px-card id="heatmap-vendor-card1" icon='demo-icon' chevron >
-           	<px-data-table id="heatmap-table" filterable table-data="{{tableData}}" horizontal>					         	
+           	<px-data-table id="heatmap-vendor" filterable table-data="{{tableData}}" horizontal>					         	
            	</px-data-table>
       </px-card>
     

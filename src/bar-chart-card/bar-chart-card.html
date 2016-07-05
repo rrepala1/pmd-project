@@ -1,8 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/px-card/px-card.html">
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
-<link rel="import" href="../../bower_components/google-chart/google-chart.html">
+
+<script src="../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../bower_components/highcharts/highcharts.js"></script>
+<script src="../../bower_components/highcharts/highstock.js"></script>
+<script src="../../bower_components/highcharts/modules/map.js"></script>
 
 <dom-module id="bar-chart-card">
   <template is="dom-bind">	
@@ -11,13 +12,14 @@
 <iron-ajax auto url="../../sample-data/plant-data.json" handle-as="json" last-response="{{tableData}}"></iron-ajax>
 -->
 
-    	<px-card id="bar-chart-card1" icon='demo-icon' chevron >
-           
-			<google-chart 
-				type='bar' 
-				options='{"title": "Age Classification"}' 
-				data='{"cols":[{"id":"","label":"Topping","pattern":"","type":"string"},{"id":"","label":"%","pattern":"","type":"number"}],"rows":[{"c":[{"v":"Aging","f":null},{"v":27.7,"f":null}]},{"c":[{"v":"Ok","f":null},{"v":72.3,"f":null}]}]}'>
-			</google-chart>			
+    	<px-card id="bar-chart-card" icon='demo-icon' chevron horizontal >
+           <table><tr><td>
+			    <div id="containerOld" style="width:50%; height:400px;"></div>
+</td>
+<td>
+			<div id="containerNew" style="width:50%; height:400px;"></div>	
+</td></tr>
+</table>		
 			
       </px-card>
     
@@ -34,6 +36,77 @@
           value: 'Guest',
         },
       },
+      ready: function() {
+	    var options1 = {
+		chart: {
+		    renderTo: 'containerOld',
+		    type: 'bar'/*,
+		    events: {
+			click: function () {
+			    //alert('chart clicked1');
+			    $.getJSON('../../sample-data/bar-chart-data1.json', function(data) {
+				options2.series[0].data = data;
+				var chart2 = new Highcharts.Chart(options2);
+			    });
+			}            
+		    }*/
+		},
+		title: {
+		    text: 'Age Classification'
+		},
+		xAxis: {
+		    categories: ['Aging','Ok'],
+		    title: {
+		        text: null
+		    }
+		},
+		plotOptions: {
+			    series: {
+				cursor: 'pointer',
+				point: {
+				    events: {
+				        click: function () {
+				            $.getJSON('../../sample-data/bar-chart-data1.json', function(data) {
+						options2.series[0].data = data;
+						var chart2 = new Highcharts.Chart(options2);
+					    });
+				        }
+				    }
+				}
+			    }
+			},
+		series: [{}]
+	    };
+var options2 = {
+		chart: {
+		    renderTo: 'containerNew',
+		    type: 'bar',
+		    events: {
+			click: function () {
+			    alert('chart clicked2');
+			}            
+		    }
+		},
+		title: {
+		    text: 'Age Classification'
+		},
+		xAxis: {
+		    categories: ['Aging','Ok'],
+		    title: {
+		        text: null
+		    }
+		},
+		series: [{}]
+	    };
+	    
+	    $.getJSON('../../sample-data/bar-chart-data.json', function(data) {
+                options1.series[0].data = data;
+		var chart1 = new Highcharts.Chart(options1);
+		options2.series[0].data = data;
+		var chart2 = new Highcharts.Chart(options2);
+	    });
+	
+      }
 
     });
   </script>

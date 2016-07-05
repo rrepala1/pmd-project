@@ -11,8 +11,12 @@
 <dom-module id="bubble-chart-card">
   <template is="dom-bind">	
 
+<!--
+<iron-ajax auto url="../../sample-data/bubble-chart-2.json" handle-as="json" last-response="{{bubbleData}}"></iron-ajax>
+-->
 
-<iron-ajax auto url="../../sample-data/bubble-chart.json" handle-as="json" last-response="{{bubbleData}}"></iron-ajax>
+<iron-ajax auto url="https://predixbubblechartms-mm.run.aws-usw02-pr.ice.predix.io/bubbleChart" handle-as="json" last-response="{{bubbleData}}"></iron-ajax>
+
 
     	<px-card id="bubble-chart-card1" icon='demo-icon' chevron >
           <!-- 
@@ -69,7 +73,7 @@
 				xAxis: {
 					gridLineWidth: 1,
 					title: {
-						text: 'Order Cost($)'
+						text: '# Open Req'
 					},
 					labels: {
 						format: '{value} '
@@ -95,7 +99,7 @@
 					startOnTick: false,
 					endOnTick: false,
 					title: {
-						text: '# Open Req'
+						text: 'Order Cost($)'
 					},
 					labels: {
 						format: '{value}'
@@ -120,7 +124,7 @@
 				tooltip: {
 					useHTML: true,
 					headerFormat: '<table>',
-					pointFormat: '<tr><th>Purchasing Group Manager </th><td>{point.purchaseManager}</td></tr>' +
+					pointFormat: '<tr><th>Purchasing Group Manager </th><td>{point.purMgr}</td></tr>' +
 						'<tr><th># Open Request: </th><td>{point.x}</td></tr>' +
 						'<tr><th>Order Cost($):</th><td>{point.y}</td></tr>' ,
 						
@@ -132,7 +136,8 @@
 					series: {
 						dataLabels: {
 							enabled: true,
-							format: '{point.name}'
+							//format: '{point.name}'
+							format: '{point.buyer}'
 						}
 					}
 				},
@@ -144,7 +149,9 @@
 				
 				
 				
-	var url =  "../../sample-data/bubble-chart.json";
+	//var url =  "../../sample-data/bubble-chart-2.json";
+	var url =  "https://predixbubblechartms-mm.run.aws-usw02-pr.ice.predix.io/bubbleChartPlant?plant=PL01";
+	
 	
     $.getJSON(url,  function(data) {
         options.series[0].data = data;

@@ -5,12 +5,13 @@
 
 <dom-module id="heatmap-buyer-card">
   <template is="dom-bind">	
-<!--
+
+
 <iron-ajax auto url="../../sample-data/plant-data.json" handle-as="json" last-response="{{tableData}}"></iron-ajax>
--->
 
-<iron-ajax auto url="https://predixdashboardtablems-mm.run.aws-usw02-pr.ice.predix.io/fetchReqDashboardBuyer" handle-as="json" last-response="{{tableData}}"></iron-ajax>
 
+<!-- <iron-ajax auto url="https://predixdashboardtablems-mm.run.aws-usw02-pr.ice.predix.io/fetchReqDashboardBuyer" handle-as="json" last-response="{{tableData}}"></iron-ajax>
+ -->
 		<style type="text/css">
 		
 			px-data-table{
@@ -20,10 +21,12 @@
 		</style>
 
     	<px-card id="heatmap-buyer-card1" icon='demo-icon' chevron >
-           	<px-data-table id="heatmap-table" filterable table-data="{{tableData}}" horizontal>					         	
+           	<px-data-table id="heatmap-buyer" filterable selectable table-data="{{tableData}}" horizontal>					         	
            	</px-data-table>
       </px-card>
     
+    
+
   </template>
 
   <script>
@@ -37,7 +40,29 @@
           value: 'Guest',
         },
       },
+    
+      
 
     });
+    
+    
+    document.addEventListener('WebComponentsReady', function() {
+
+          document.getElementById("heatmap-buyer").addEventListener("px-row-click", function(e) {
+            var clickedRow = e.detail.row;
+            
+           
+                        
+            console.log("Row clicked", clickedRow , " _selected: ", clickedRow._selected);
+            
+            $.each(clickedRow.row.Plant, function(key,val){
+   				 console.log(key + ":" + val);
+				});
+           
+           this.fire('iron-signal',{name: 'mysignal', data: "data"});
+           		
+          });
+        });
+
   </script>
 </dom-module>

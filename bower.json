@@ -14,7 +14,8 @@
     "app-layout": "PolymerElements/app-layout#^0.9.1",
     "paper-menu": "PolymerElements/paper-menu#^1.2.2",
     "paper-item": "PolymerElements/paper-item#^1.2.1",
-    "paper-tabs": "PolymerElements/paper-tabs#^1.6.2"
+    "paper-tabs": "PolymerElements/paper-tabs#^1.6.2",
+    "rmd-px-data-table": "PredixDev/rmd-px-data-table"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

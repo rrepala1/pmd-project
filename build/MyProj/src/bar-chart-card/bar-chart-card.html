@@ -4,16 +4,76 @@
 <script src="../../bower_components/highcharts/highcharts.js"></script>
 <script src="../../bower_components/highcharts/highstock.js"></script>
 <script src="../../bower_components/highcharts/modules/map.js"></script>
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="bar-chart-card">
   <template is="dom-bind">	
 
 <!--
-<iron-ajax auto url="../../sample-data/plant-data.json" handle-as="json" last-response="{{tableData}}"></iron-ajax>
+<iron-ajax auto url="../../sample-data/summary-table.json" handle-as="json" last-response="{{tableData1}}"></iron-ajax>
 -->
 
+<iron-ajax auto url="https://predixtotalsblockms-mm.run.aws-usw02-pr.ice.predix.io/TotalsBlock" handle-as="json" last-response="{{tableData1}}"></iron-ajax>
+
+
+
+		<style type="text/css">
+		
+			px-data-table{
+					font-size: 11px;
+			} 
+			
+			
+table {
+    border-collapse: collapse;
+}
+table td, table th {
+    border: 1px solid black;
+}
+table tr:first-child th {
+    border-top: 0;
+}
+table tr:last-child td {
+    border-bottom: 0;
+}
+table tr td:first-child,
+table tr th:first-child {
+    border-left: 0;
+}
+table tr td:last-child,
+table tr th:last-child {
+    border-right: 0;
+}
+
+
+		</style>
     	<px-card id="bar-chart-card" icon='demo-icon' chevron horizontal >
-           <table><tr><td>
+			  <br>
+		<table>
+    	<tr>
+        <th>Total</th>
+        <th>#Aging(5+ Days)</th>
+        <th>%Aging</th>
+        <th>#with No source</th>
+        <th>%with No source</th>
+    	</tr>
+    
+ 		<tr>
+			<template is="dom-repeat" items="{{tableData1}}" as="summaryData">
+			   
+				<td>{{summaryData.totalAging}}</td>
+        		<td>{{summaryData.aging5Day}}</td>
+        		<td>{{summaryData.perAging}}</td>
+        		<td>{{summaryData.cntWithNoSource}}</td>
+        		<td>{{summaryData.perWithNoSource}}</td>
+        		
+			</template>			   
+			   </tr>
+		</table>    	
+		<br><br>
+
+           <table ><tr><td>
 			    <div id="containerOld" style="width:50%; height:400px;"></div>
 </td>
 <td>
@@ -51,6 +111,14 @@
 			}            
 		    }*/
 		},
+		plotOptions: {
+				bar: {
+					colorByPoint: true
+				}
+		},
+		colors: [
+			'#FE3737','#00A1EA'
+		],	
 		title: {
 		    text: 'Age Classification'
 		},
@@ -60,7 +128,7 @@
 		        text: null
 		    }
 		},
-		plotOptions: {
+		/*plotOptions: {
 			    series: {
 				cursor: 'pointer',
 				point: {
@@ -74,7 +142,8 @@
 				    }
 				}
 			    }
-			},
+			    
+			},*/
 		series: [{}]
 	    };
 var options2 = {
@@ -87,24 +156,44 @@ var options2 = {
 			}            
 		    }
 		},
+		plotOptions: {
+				bar: {
+					colorByPoint: true
+				}
+		},
+		colors: [
+			'#FE3737','#00A1EA'
+		],	
 		title: {
-		    text: 'Age Classification'
+		    text: 'Source Assignment'
 		},
 		xAxis: {
-		    categories: ['Aging','Ok'],
+		    categories: ['No Source','Source'],
 		    title: {
 		        text: null
 		    }
 		},
 		series: [{}]
 	    };
+	    
+	    /*
 	    $.getJSON('../../sample-data/bar-chart-data.json', function(data) {
                 options1.series[0].data = data;
 		var chart1 = new Highcharts.Chart(options1);
 		options2.series[0].data = data;
 		var chart2 = new Highcharts.Chart(options2);
 	    });
-	
+		*/	
+			
+		$.getJSON('https://predixageclassificationms-mm.run.aws-usw02-pr.ice.predix.io/ageClassification', function(data) {
+      		options1.series[0].data = data;
+				var chart1 = new Highcharts.Chart(options1);
+			});		
+		
+		$.getJSON('https://predixsourceassignmentms-mm.run.aws-usw02-pr.ice.predix.io/sourceAssignment', function(data) {
+				options2.series[0].data = data;
+				var chart2 = new Highcharts.Chart(options2);
+	    	});
       }
 
     });

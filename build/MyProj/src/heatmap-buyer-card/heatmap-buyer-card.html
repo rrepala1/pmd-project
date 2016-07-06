@@ -55,10 +55,14 @@
                         
             console.log("Row clicked", clickedRow , " _selected: ", clickedRow._selected);
             
-            $.each(clickedRow.row.Plant, function(key,val){
+            $.each(clickedRow.row.plant, function(key,val){
    				 console.log(key + ":" + val);
+   				 refreshBubbleChart(val);
 				});
            
+           //this.fire('iron-signal',{name: 'mysignal', data: "data"});
+           
+           		
           });
         });
 

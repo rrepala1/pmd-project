@@ -95,14 +95,7 @@
 </head>
   
 <body>
-<div>
-	<div>
-		<header-card></header-card>
-	</div>
-	<div id="layout">
-	</div>
 
-</div>
     
 </body>
 </html>

@@ -143,9 +143,17 @@
 		},
             series: seriesData
         });*/
+        
+        
+/***************        
+        
 var optionsStack;
-$.getJSON('https://predixpurchasereqsourcems-mm.run.aws-usw02-pr.ice.predix.io/purReqSource', function(data1) {
+$.getJSON('../../sample-data/stacked-bar-data.json', function(data1) {
+//$.getJSON('https://predixpurchasereqsourcems-mm.run.aws-usw02-pr.ice.predix.io/purReqSource', function(data1) {
 		//optionsStack.series[0].data = testData;
+		
+		
+		
 		optionsStack = {
 		chart: {
                 renderTo: 'containerStack',
@@ -179,16 +187,88 @@ $.getJSON('https://predixpurchasereqsourcems-mm.run.aws-usw02-pr.ice.predix.io/p
 		    }
 		},
             series: data1
+            //series: [{}]
 	    };
 
+			var chartStack = new Highcharts.Chart(optionsStack);
+	   });
+/*
+	$.getJSON('../../sample-data/stacked-bar-data.json', function(data1) {
+	//$.getJSON('https://predixpurchasereqsourcems-mm.run.aws-usw02-pr.ice.predix.io/purReqSource', function(data1) {
 
-	    });
-
-	$.getJSON('https://predixpurchasereqsourcems-mm.run.aws-usw02-pr.ice.predix.io/purReqSource', function(data1) {
-		//optionsStack.series[0].data = testData;
+		alert("Stack..");
+		
+		optionsStack.series[0].data = data1;
 		var chartStack = new Highcharts.Chart(optionsStack);
 	    });
+*
+******************/
+
+			refreshStackedChart('ALL');
       }
-    });
+     });
+    
+    
+	function refreshStackedChart(plantID)
+	{
+		var optionsStack;
+		
+		var urlStatic = '../../sample-data/stacked-bar-data.json';
+		var urlStack = 'https://predixpurchasereqsourcems-mm.run.aws-usw02-pr.ice.predix.io/purReqSource';
+		
+		/*
+		Uncomment when drill down is ready
+		if(plantID != 'ALL')
+			{
+				urlStack += "/"+plantID;
+			}
+		*/
+		
+//$.getJSON(urlStatic, function(data1) {
+$.getJSON(urlStack, function(data1) {
+		//optionsStack.series[0].data = testData;
+		
+		
+		
+		optionsStack = {
+		chart: {
+                renderTo: 'containerStack',
+                type: 'bar'
+            },
+            title: {
+                text: 'Stacked column chart'
+            },
+            xAxis: {
+                categories: ['source', 'no source']
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Stacked Bar Chart'
+                },
+                stackLabels: {
+                    enabled: true,
+                    style: {
+                        fontWeight: 'bold',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                    }
+                }
+            },
+            legend: {
+		    reversed: true
+		},
+		plotOptions: {
+		    series: {
+			stacking: 'normal'
+		    }
+		},
+            series: data1
+            //series: [{}]
+	    };
+
+			var chartStack = new Highcharts.Chart(optionsStack);
+	   });
+	}    
+    
   </script>
 </dom-module>

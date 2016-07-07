@@ -143,18 +143,21 @@
     
     	function refreshBubbleChart(plantID)
 		{
+			console.log("Refreshing BubbleChart ====");
 			console.log("Plant ID: " + plantID);
 			
-			//var url =  "../../sample-data/bubble-chart-2.json";
-			var url =  "https://predixbubblechartms-mm.run.aws-usw02-pr.ice.predix.io/bubbleChartPlant";
+			var urlStatic =  "../../sample-data/bubble-chart-2.json";
+			
+			var urlBubble =  "https://predixbubblechartms-mm.run.aws-usw02-pr.ice.predix.io/bubbleChart";
 			
 			if(plantID != 'ALL')
 			{
-				url += "/"+plantID;
+				urlBubble += "/"+plantID;
 			}
 	
 	
-    		$.getJSON(url,  function(data) {
+    		$.getJSON(urlStatic,  function(data) {
+    		//$.getJSON(urlBubble,  function(data) {
         		bubbleOptions.series[0].data = data;
         		var chart = new Highcharts.Chart(bubbleOptions);
     		});

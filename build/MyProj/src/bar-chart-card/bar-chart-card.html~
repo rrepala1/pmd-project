@@ -74,7 +74,7 @@ table tr th:last-child {
 		<br><br>
 
            <table ><tr><td>
-			    <div id="containerOld" style="width:50%; height:400px;"></div>
+			    <div id="containerOld" style="width:405px; height:400px"></div>
 </td>
 <td>
 			<div id="containerNew" style="width:50%; height:400px;"></div>	
@@ -86,6 +86,9 @@ table tr th:last-child {
   </template>
 
   <script>
+  var options1;
+  var options2;
+  
     Polymer({
 
       is: 'bar-chart-card',
@@ -97,7 +100,7 @@ table tr th:last-child {
         },
       },
       ready: function() {
-	    var options1 = {
+	    options1 = {
 		chart: {
 		    renderTo: 'containerOld',
 		    type: 'bar'/*,
@@ -146,7 +149,7 @@ table tr th:last-child {
 			},*/
 		series: [{}]
 	    };
-var options2 = {
+	options2 = {
 		chart: {
 		    renderTo: 'containerNew',
 		    type: 'bar',
@@ -175,27 +178,56 @@ var options2 = {
 		},
 		series: [{}]
 	    };
-	    
-	    /*
-	    $.getJSON('../../sample-data/bar-chart-data.json', function(data) {
-                options1.series[0].data = data;
-		var chart1 = new Highcharts.Chart(options1);
-		options2.series[0].data = data;
-		var chart2 = new Highcharts.Chart(options2);
-	    });
-		*/	
+	   
+		refreshBarChart('ALL');
+		}	
+    });
+    
+    
+		function refreshBarChart(plantID)
+		{
+			console.log("Refreshing BarChart ====");
+			console.log("Plant ID: " + plantID);
 			
-		$.getJSON('https://predixageclassificationms-mm.run.aws-usw02-pr.ice.predix.io/ageClassification', function(data) {
+			var urlStatic =  "../../sample-data/bar-chart-data.json";
+			
+			var urlAge =  "https://predixageclassificationms-mm.run.aws-usw02-pr.ice.predix.io/ageClassification";
+			var urlSource =  "https://predixageclassificationms-mm.run.aws-usw02-pr.ice.predix.io/ageClassification";
+			
+			/*
+			Uncomment when drill down is ready
+			if(plantID != 'ALL')
+			{
+				urlAge += "/"+plantID;
+				urlSource += "/"+plantID;
+			}
+			*/
+	
+	
+    	/*	 
+	    $.getJSON(urlStatic, function(data) {
+         
+         options1.series[0].data = data;
+			var chart1 = new Highcharts.Chart(options1);
+			options2.series[0].data = data;
+			var chart2 = new Highcharts.Chart(options2);
+			
+	    });
+		*/
+			
+			
+		$.getJSON(urlAge, function(data) {
       		options1.series[0].data = data;
 				var chart1 = new Highcharts.Chart(options1);
 			});		
 		
-		$.getJSON('https://predixsourceassignmentms-mm.run.aws-usw02-pr.ice.predix.io/sourceAssignment', function(data) {
+		$.getJSON(urlSource, function(data) {
 				options2.series[0].data = data;
 				var chart2 = new Highcharts.Chart(options2);
 	    	});
+	   
       }
-
-    });
+    			    
+    
   </script>
 </dom-module>

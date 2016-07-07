@@ -1,10 +1,10 @@
 [
 {
-	name: 'Aging (+5 days)',
-   data: [5741, 777]
+	"name": "Aging (+5 days)",
+   "data": [5741, 777]
 }, 
 {
-	name: 'Ok',
-	data: [10819, 1306]
+	"name": "Ok",
+	"data": [10819, 1306]
 }
 ]

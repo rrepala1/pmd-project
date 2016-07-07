@@ -56,8 +56,13 @@
             console.log("Row clicked", clickedRow , " _selected: ", clickedRow._selected);
             
             $.each(clickedRow.row.plant, function(key,val){
+
    				 console.log(key + ":" + val);
+	  
    				 refreshBubbleChart(val);
+   				 refreshBarChart(val);
+   				 refreshStackedChart(val);
+   				
 				});
            
            //this.fire('iron-signal',{name: 'mysignal', data: "data"});

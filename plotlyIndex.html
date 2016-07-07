@@ -1,0 +1,80 @@
+<html>
+<head>
+    <script src="/bower_components/plotlyjs/plotly.js"></script>
+</head>
+
+<body>
+
+<div id="myDiv"></div>
+
+</body>
+
+<script type="text/javascript" >
+
+(function() {
+var d3 = Plotly.d3;
+
+var WIDTH_IN_PERCENT_OF_PARENT = 60,
+    HEIGHT_IN_PERCENT_OF_PARENT = 80;
+
+var gd3 = d3.select('body')
+    .append('div')
+    .style({
+        width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+        'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
+
+        height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
+        'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+    });
+
+var gd = gd3.node();
+
+Plotly.plot(gd, [{
+    type: 'bar',
+    x: [12, 5],
+    y: ["age","ok"],
+    orientation: 'h',
+    marker: {
+        color: '#C8A2C8',
+        line: {
+            width: 2.5
+        }
+    }
+}], {
+    title: 'Auto-Resize',
+    font: {
+        size: 16
+    }
+});
+
+window.onresize = function() {
+    Plotly.Plots.resize(gd);
+};
+
+
+var data1 = [{
+  type: 'bar',
+  x: [20, 14, 23],
+  y: ['giraffes', 'orangutans', 'monkeys'],
+  orientation: 'h'
+}];
+
+
+Plotly.newPlot('myDiv', data1);
+
+
+/*
+var url='sample-data/bar-chart-data.json';
+
+d3.json(url, function(error, data) {
+  if (error) return console.warn(error);
+  var layout = {barmode: 'group'};
+  
+ Plotly.newPlot('myDiv', data.data,layout);
+});
+*/
+
+
+})();
+</script>
+</html>

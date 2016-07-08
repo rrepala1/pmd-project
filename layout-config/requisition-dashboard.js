@@ -7,7 +7,8 @@ var config = {
         type: 'row',
         content:[
         {
-            width: 20,
+            width: (0.20*window.screen.width),
+			height: (window.screen.height),
             type: 'column',
             content:[
               {
@@ -19,7 +20,8 @@ var config = {
             ]
           },
           {
-            width: 80,
+            width: (0.80*window.screen.width),
+			height: (window.screen.height),
             type: 'column',
             content: [
               {
@@ -27,18 +29,23 @@ var config = {
                 type: 'row',
                 content:[
                   {
+					 
                 type: 'stack',
                 content:[
+				
                   {
       					type: 'component',
         					title:'Buyer',
-      					componentName: 'heatMapBuyer'
+      					componentName: 'heatMapBuyer',
+						
     					},
                   {
                     
                     type: 'component',
                     title: 'Vendor',
-                    componentName: 'heatMapVendor'                    
+                    componentName: 'heatMapVendor',
+						
+					
                   }
                 ]
               },
@@ -46,6 +53,7 @@ var config = {
                     title: 'Summary',
                     type: 'component',
                     componentName: 'barChart'
+
                   }
                 ]
               
@@ -56,12 +64,14 @@ var config = {
                   {
                     type: 'component',
                     title: 'Scatter - Requisition By Buyer',
-                    componentName: 'bubbleChart'                    
+                    componentName: 'bubbleChart'
+                    
                   },
                   {
                     title: 'Requisition By Purchasing Group Manager',
                     type: 'component',
-                    componentName: 'stackedBarChart'
+                    componentName: 'stackedBarChart'					
+
                   }
                 ]
               }

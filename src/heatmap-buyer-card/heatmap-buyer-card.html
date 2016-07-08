@@ -18,7 +18,9 @@
 			px-data-table{
 					font-family: "GE Inspira Sans";
 					font-size: 10px;
+					height : 100% !important;
 			} 
+
 			<!--
 			px-data-table.heatmap-buyer-card .aha-table-0 .tr--filter.aha-table{
 				background-color:#fff!important;
@@ -30,6 +32,18 @@
 
     	<px-card id="heatmap-buyer-card1" icon='demo-icon' chevron >
            	<px-data-table id="heatmap-buyer" filterable selectable table-data="{{plants}}" horizontal>					         	
+
+			
+			px-card{
+				height : 100%;
+				width:100%;
+			}
+
+		</style>
+
+    	<px-card id="heatmap-buyer-card1" icon='demo-icon' chevron>
+           	<px-data-table id="heatmap-buyer" filterable selectable table-data="{{tableData}}" horizontal>					         	
+
            	</px-data-table>
       </px-card>
     

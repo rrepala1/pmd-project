@@ -20,7 +20,14 @@
 		
 			px-data-table{
 					font-size: 11px;
+					height:100% !important;
 			} 
+			
+			px-card{
+				height:100%;
+				width:100%;
+				padding:0% 1% 1% 1%;
+			}
 			
 			
 table.summary {
@@ -53,7 +60,11 @@ table.summary tr th:last-child {
 		</style>
     	<px-card id="bar-chart-card" icon='demo-icon' chevron horizontal >
 			  <br>
+
 		<table class="summary" cellpadding="5px">
+
+		<table style = "width : 67%; height :5% ">
+
     	<tr>
         <th>Total</th>
         <th>#Aging(5+ Days)</th>
@@ -73,6 +84,7 @@ table.summary tr th:last-child {
         		
 			</template>			   
 			   </tr>
+
 		</table>    	
 		<br>
 
@@ -82,6 +94,17 @@ table.summary tr th:last-child {
 <td style="width:50%;">
 			<div id="containerNew" style="width:100%; height:200px"></div>	
 </td></tr>
+
+		</table >    	
+		<br>
+
+           <table style = "width : 100%; height :40% "><tr><td style = "width : 50%; height :35% ">
+					<div id="containerOld" ></div>
+				</td>
+				<td style = "width : 50%; height :35% ">
+					<div id="containerNew" ></div>	
+			</td></tr>
+
 </table>		
 			
       </px-card>

@@ -98,3 +98,21 @@
     
 </body>
 </html>
+<script type="text/javascript">
+		$(document).ready(function(){
+			$('.lm_header').css("visibility","hidden");
+
+			$('.lm_goldenlayout lm_item lm_root').css("background-color","grey");
+
+			//$('.lm_item.lm_row').first('.lm_item.lm_column').children().find('.lm_items').css('margin-top','-25px');
+			$('.lm_item.lm_stack').mouseover(function(){
+				$(this).find('.lm_header').css("visibility","visible");
+			});
+			$('.lm_item.lm_stack').mouseout(function(){
+				$(this).find('.lm_header').css("visibility","hidden");
+			});
+		});
+
+	</script>
+
+	</script>

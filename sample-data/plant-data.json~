@@ -1,27 +1,31 @@
 [
 	{
-		"Plant":"P01",
+		"plant":"P01",
+		"plantDesc":"P01-GE Austria After Market",
 		"Aging_0-1":150,
 		"Aging_2":250,
 		"Aging_3-4":50,
 		"Aging_5":80	
 	},
 	{
-		"Plant":"P02",
+		"plant":"P02",
+		"plantDesc":"P02-GE Austria After Market",
 		"Aging_0-1":250,
 		"Aging_2":150,
 		"Aging_3-4":100,
 		"Aging_5":180	
 	},
 	{
-		"Plant":"P03",
+		"plant":"P03",
+		"plantDesc":"P03-GE Austria After Market",
 		"Aging_0-1":400,
 		"Aging_2":500,
 		"Aging_3-4":450,
 		"Aging_5":600	
 	},
 	{
-		"Plant":"P04",
+		"plant":"P04",
+		"plantDesc":"P04-GE Austria After Market",
 		"Aging_0-1":100,
 		"Aging_2":300,
 		"Aging_3-4":500,

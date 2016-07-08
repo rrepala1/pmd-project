@@ -9,7 +9,7 @@
 <dom-module id="stacked-bar-chart">
   <template>
    
-    <div id="containerStack" style="width:100%; height:400px;"></div>
+    <div id="containerStack" style="width:100%; height:300px;"></div>
   </template>
 
   <script>
@@ -217,15 +217,15 @@ $.getJSON('../../sample-data/stacked-bar-data.json', function(data1) {
 		var urlStack = 'https://predixpurchasereqsourcems-mm.run.aws-usw02-pr.ice.predix.io/purReqSource';
 		
 		/*
-			Uncomment when drill down is ready
+		Uncomment when drill down is ready
 		if(plantID != 'ALL')
 			{
 				urlStack += "/"+plantID;
 			}
 		*/
 		
-//$.getJSON(urlStatic, function(data1) {
-$.getJSON(urlStack, function(data1) {
+$.getJSON(urlStatic, function(data1) {
+//$.getJSON(urlStack, function(data1) {
 		//optionsStack.series[0].data = testData;
 		
 		
@@ -234,7 +234,21 @@ $.getJSON(urlStack, function(data1) {
 		chart: {
                 renderTo: 'containerStack',
                 type: 'bar'
-            },
+            },legend: {
+			 enabled: false		
+		},
+		credits: {
+      enabled: false
+  },
+		exporting: {
+        buttons: {
+            contextButtons: {
+                enabled: false,
+                menuItems: null
+            }
+        },
+        	enabled: false
+        },
             title: {
                 text: 'Stacked column chart'
             },

@@ -31,8 +31,8 @@ var gd = gd3.node();
 
 Plotly.plot(gd, [{
     type: 'bar',
-    x: [12],
-    y: [5],
+    x: [12, 5],
+    y: ["age","ok"],
     orientation: 'h',
     marker: {
         color: '#C8A2C8',
@@ -51,6 +51,7 @@ window.onresize = function() {
     Plotly.Plots.resize(gd);
 };
 
+/*
 
 var data1 = [{
   type: 'bar',
@@ -62,17 +63,64 @@ var data1 = [{
 
 Plotly.newPlot('myDiv', data1);
 
-
-/*
-var url='sample-data/bar-chart-data.json';
-
-d3.json(url, function(error, data) {
-  if (error) return console.warn(error);
-  var layout = {barmode: 'group'};
-  
- Plotly.newPlot('myDiv', data.data,layout);
-});
 */
+
+//var url='/sample-data/sample-plot.json';
+
+
+var gd4 = d3.select('myDiv')
+    .append('div')
+    .style({
+        width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+        'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
+
+        height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
+        'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+    });
+
+var gd4 = gd4.node();
+
+console.log(gd4);
+
+
+var url='/sample-data/my-plot-sample.json';
+
+d3.json(url, function(error, data1) {
+
+  if (error) return console.warn(error);
+  
+  //var layout = {barmode: 'group'};
+  
+  console.log(data1);
+  
+	var trace1 = {
+    y: data1.data[0].y, // ['Marc', 'Henrietta', 'Jean', 'Claude', 'Jeffrey', 'Jonathan', 'Jennifer', 'Zacharias'],
+    x: data1.data[0].x, //[90, 40, 60, 80, 75, 92, 87, 73],
+    type: 'bar',
+    orientation: 'h'
+	};
+
+	var data = [trace1];
+
+	var layout = {
+   	title: 'Always Display the Modebar',
+		showlegend: false
+	};  
+  
+  
+  
+	//Plotly.newPlot('myDiv', data.data,layout);
+	Plotly.newPlot('myDiv', data, layout, {displayModeBar: true});
+	
+	window.onresize = function() {
+    //Plotly.Plots.resize(gd4);
+
+    //console.log("REsize.."+ $.myDiv);
+    
+    	Plotly.relayout(,500,500);
+	};
+
+});
 
 
 })();

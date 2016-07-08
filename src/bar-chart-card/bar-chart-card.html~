@@ -10,13 +10,11 @@
 <dom-module id="bar-chart-card">
   <template is="dom-bind">	
 
-
 <iron-ajax auto url="../../sample-data/summary-table.json" handle-as="json" last-response="{{tableData1}}"></iron-ajax>
 
 <!--
 <iron-ajax auto url="https://predixtotalsblockms-mm.run.aws-usw02-pr.ice.predix.io/TotalsBlock" handle-as="json" last-response="{{tableData1}}"></iron-ajax>
 -->
-
 
 		<style type="text/css">
 		
@@ -25,24 +23,29 @@
 			} 
 			
 			
-table {
+table.summary {
     border-collapse: collapse;
+    font-size: 12px;
+    color: rgb(54, 54, 54); 
+    font-weight: normal;
+    
 }
-table td, table th {
+table.summary td, table.summary th {
     border: 1px solid black;
+   cellspacing: 10px;
 }
-table tr:first-child th {
+table.summary tr:first-child th {
     border-top: 0;
 }
-table tr:last-child td {
+table.summary tr:last-child td {
     border-bottom: 0;
 }
-table tr td:first-child,
-table tr th:first-child {
+table.summary tr td:first-child,
+table.summary tr th:first-child {
     border-left: 0;
 }
-table tr td:last-child,
-table tr th:last-child {
+table.summary tr td:last-child,
+table.summary tr th:last-child {
     border-right: 0;
 }
 
@@ -50,7 +53,7 @@ table tr th:last-child {
 		</style>
     	<px-card id="bar-chart-card" icon='demo-icon' chevron horizontal >
 			  <br>
-		<table>
+		<table class="summary" cellpadding="5px">
     	<tr>
         <th>Total</th>
         <th>#Aging(5+ Days)</th>
@@ -71,13 +74,13 @@ table tr th:last-child {
 			</template>			   
 			   </tr>
 		</table>    	
-		<br><br>
+		<br>
 
-           <table ><tr><td>
-			    <div id="containerOld" style="width:405px; height:400px"></div>
+           <table style="width:100%;"><tr><td style="width:50%;">
+			    <div id="containerOld" style="width:100%; height:200px"></div>
 </td>
-<td>
-			<div id="containerNew" style="width:380px; height:400px"></div>	
+<td style="width:50%;">
+			<div id="containerNew" style="width:100%; height:200px"></div>	
 </td></tr>
 </table>		
 			
@@ -114,6 +117,21 @@ table tr th:last-child {
 			}            
 		    }*/
 		},
+		legend: {
+			 enabled: false		
+		},
+		credits: {
+      enabled: false
+  },
+		exporting: {
+        buttons: {
+            contextButtons: {
+                enabled: false,
+                menuItems: null
+            }
+        },
+        	enabled: false
+        },        	
 		plotOptions: {
 				bar: {
 					colorByPoint: true
@@ -130,7 +148,7 @@ table tr th:last-child {
 		    title: {
 		        text: null
 		    }
-		},
+		}
 		/*plotOptions: {
 			    series: {
 				cursor: 'pointer',
@@ -147,6 +165,7 @@ table tr th:last-child {
 			    }
 			    
 			},*/
+		,
 		series: [{}]
 	    };
 	options2 = {
@@ -159,6 +178,21 @@ table tr th:last-child {
 			}            
 		    }
 		},
+		legend: {
+			 enabled: false		
+		},
+		credits: {
+      enabled: false
+  },
+		exporting: {
+        buttons: {
+            contextButtons: {
+                enabled: false,
+                menuItems: null
+            }
+        },
+        	enabled: false
+        },        
 		plotOptions: {
 				bar: {
 					colorByPoint: true
@@ -203,19 +237,23 @@ table tr th:last-child {
 			}
 			*/
 	
-	
-    	/*	 
+
+    	
 	    $.getJSON(urlStatic, function(data) {
          
          options1.series[0].data = data;
-			var chart1 = new Highcharts.Chart(options1);
+         //options1.series =  [{ data: data }];
+         
+         var chart1 = new Highcharts.Chart(options1);
+         
 			options2.series[0].data = data;
 			var chart2 = new Highcharts.Chart(options2);
 			
-	    });
-		*/
 			
-		/*	
+	    });
+		
+			
+		/*
 		$.getJSON(urlAge, function(data) {
       		options1.series[0].data = data;
 				var chart1 = new Highcharts.Chart(options1);

@@ -73,7 +73,7 @@ var config = {
   };
 
 
-window.myLayout = new GoldenLayout( config);
+window.myLayout = new GoldenLayout( config, $("#layout") );
   
 
 myLayout.registerComponent( 'filterPanel', function( container, componentState ){

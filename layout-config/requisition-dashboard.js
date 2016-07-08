@@ -102,6 +102,7 @@ myLayout.registerComponent( 'stackedBarChart', function( container, componentSta
     container.getElement().html( '<stacked-bar-chart></stacked-bar-chart>' );
 });
 
+//myLayout.registerComponent();
 
 myLayout.init();
 

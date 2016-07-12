@@ -189,8 +189,10 @@ lm.utils.copy( lm.items.RowOrColumn.prototype, {
 	_setAbsoluteSizes: function() {
 		var i,
 			totalSplitterSize = ( this.contentItems.length - 1 ) * this._splitterSize,
-			totalWidth = 0.999*this.element.width(),
-			totalHeight = this.element.height(),
+			//overallwidth = window.screen.width();
+			//overallwidth
+			totalWidth = 0.994*this.element.width(),
+			totalHeight = 0.992*this.element.height(),
 			totalAssigned = 0,
 			additionalPixel,
 			itemSize,

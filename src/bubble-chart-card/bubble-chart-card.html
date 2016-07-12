@@ -189,8 +189,8 @@
 			}
 			*/
 	
-    		$.getJSON(urlStatic,  function(data) {
-    		//$.getJSON(urlBubble,  function(data) {
+    		//$.getJSON(urlStatic,  function(data) {
+    		$.getJSON(urlBubble,  function(data) {
         		bubbleOptions.series[0].data = data;
         		var chart = new Highcharts.Chart(bubbleOptions);
     		});

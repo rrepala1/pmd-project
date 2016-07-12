@@ -7,7 +7,8 @@ var config = {
         type: 'row',
         content:[
         {
-            width: (0.20*window.screen.width),
+            width: 20,
+			
             type: 'column',
             content:[
               {
@@ -19,11 +20,10 @@ var config = {
             ]
           },
           {
-            width: (0.80*window.screen.width),
+            width: 80,
             type: 'column',
             content: [
               {
-                
                 type: 'row',
                 content:[
                   {
@@ -51,7 +51,7 @@ var config = {
               
               },
               {
-                type: 'row',
+                type: 'row', 
                 content:[
                   {
                     type: 'component',

@@ -5,6 +5,7 @@
 .lm_content{
 	background: #ffffff;
 	border: 1px solid #ccc;
+	
 }
 
 .lm_dragProxy .lm_content{
@@ -52,7 +53,7 @@
 }
 
 .lm_header .lm_tab{
-	background: #fafafa;
+	background: #e1e1e1;
 	color: #888;
 	font-size: 12px;
 	padding-bottom: 4px;
@@ -68,7 +69,7 @@
 .lm_tab.lm_active, 
 .lm_tab:hover{
 	color: #777;
-	background: #e1e1e1;
+	background: #ffffff;
 }
 
 .lm_header .lm_tab.lm_active{

@@ -326,7 +326,7 @@
         if(editing){
           classList.push('visuallyhidden');
         }
-        if (!cellDisplayValue){
+        if (!cellDisplayValue && !(cellDisplayValue === 0)){
           classList.push('cell--value__empty');
         }
 
